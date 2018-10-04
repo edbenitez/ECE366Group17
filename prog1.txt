@@ -2,6 +2,12 @@
 # 6^p mod Q
 
 
-Ld r1 r2	# r1(P)=mem[0]
+Ld r0 r2	# r0(P)=mem[0]
+init r1 3	# r1 = 3
+shftR r1 1	# r1 = 6
 init r2 1	# r2 = 1
+ld r2 r2	# r2(Q) = mem[1]
+sub r1 r2	# 6 - Q
+
+
 
