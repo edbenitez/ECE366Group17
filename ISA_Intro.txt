@@ -12,4 +12,18 @@ of your assembly branch instructions and their corresponding machine code.
 
 5. Data memory addressing modes. What addressing modes are supported for data
 memory? How are the addresses calculated? Give examples of your assembly load / store
-instructions and their corresponding machine code. 
+instructions and their corresponding machine code.
+
+# F.A.S.T.
+# Fast Assembly Super Turbo
+# instructions:		opcode:
+# init  R imm    	000
+# Ld    R R      	001
+# Str   R R		010
+# add   R R		011
+# and   R R		100
+# xor   R R		101
+# beqRs R imm 		110
+# shftR imm		111
+
+
