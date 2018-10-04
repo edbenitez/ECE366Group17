@@ -14,16 +14,42 @@ of your assembly branch instructions and their corresponding machine code.
 memory? How are the addresses calculated? Give examples of your assembly load / store
 instructions and their corresponding machine code.
 
-# F.A.S.T.
-# Fast Assembly Super Turbo
-# instructions:		opcode:
-# init  R imm    	000
-# Ld    R R      	001
-# Str   R R		010
-# add   R R		011
-# and   R R		100
-# xor   R R		101
-# beqRs R imm 		110
-# shftR imm		111
+ F.A.S.T.
+ Fast Assembly Super Turbo
+
+ Philosophy is to minimize use of loops except for looping through entries and
+ have some instructed carry implicit details:
+ beqRs will always check if reg is = Rs which we will define.
+ beqRs will have the imm number offsetted by a certain amount in hardware so that 
+ we can use minimal bits for the imm number.
+ and, add, and xor will store the result in the first reg
+
+ Registers:
+ 2 bits will be used for registers so we will support 4 registered initialized to 0.
+  
+ instructions:		
+		op   reg imm  
+ init  R imm    000  r  iii
+ 
+		op   reg reg
+ Ld    R R      001  rr  rr
+ 
+  		op   reg reg 
+ Str   R R	010  rr  rr
+ 
+ 		op   reg reg
+ add   R R	011  rr  rr
+ 
+ 		op   reg reg
+ sub   R R	100  rr  rr
+ 
+ 		op   reg reg
+ xor   R R	101  rr  rr
+ 
+ 		op   reg imm
+ beqRs R imm 	110  rr  ii
+ 
+ 		op   reg imm
+ shftR imm	111  rr  ii
 
 
