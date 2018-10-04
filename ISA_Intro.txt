@@ -1,0 +1,29 @@
+1. Introduction. This should include the name of the architecture, overall philosophy,
+specific goals strived for and achieved.
+
+2. Instruction list. Give all the instructions, their formats, opcodes, and an example.
+
+3. Register design. How many registers are supported? Is there anything special about the
+registers?
+
+4. Control flow (branches). What types of branches are supported? How are the target
+addresses calculated? What is the maximum branch distance supported? Give examples
+of your assembly branch instructions and their corresponding machine code.
+
+5. Data memory addressing modes. What addressing modes are supported for data
+memory? How are the addresses calculated? Give examples of your assembly load / store
+instructions and their corresponding machine code.
+
+# F.A.S.T.
+# Fast Assembly Super Turbo
+# instructions:		opcode:
+# init  R imm    	000
+# Ld    R R      	001
+# Str   R R		010
+# add   R R		011
+# and   R R		100
+# xor   R R		101
+# beqRs R imm 		110
+# shftR imm		111
+
+
