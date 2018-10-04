@@ -1,0 +1,7 @@
+# F.A.S.T. Implementation of program 1
+# 6^p mod Q
+
+
+Ld r1 r2	# r1(P)=mem[0]
+init r2 1	# r2 = 1
+
