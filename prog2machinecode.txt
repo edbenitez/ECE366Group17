@@ -1,7 +1,7 @@
 Assembly:		Machine Code:		
 
 init r1, 3		(0)000   1  010
-ld r2, (r1)		(1)001  01   01
+ld r2, (r1)		(1)001  10   01
 init r1, 8		(0)000   1  111
 init r0, 6		(0)000   0  101
 str r1, (r0)		(0)010  01   00
