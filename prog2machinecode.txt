@@ -1,40 +1,39 @@
 Assembly:		Machine Code:		
 
-init r1, 3        	000  1  011
-ld r2, (r1)             001  01  01
-init r1, 8     		000  
-init r0, 6           
-str r1, (r0) 	     
-loop:
-ld r3, (r1)      
-scr r3, r2       
-init r1, 4       
-ld r0, (r1)    
-beqR0, r3, equal 
-sltR0 r0, r3     
-init r1, 1       
-beqR0 r1 new    
+init r1, 3        	000   1  010
+ld r2, (r1)             001  01   01
+init r1, 8     		000   1  111
+init r0, 6              000   0  101
+str r1, (r0) 	        010  01   00
+loop:	
+ld r3, (r1)		001  11   01      
+scr r3, r2 		111  11   10      
+init r1, 4       	000   1  011
+ld r0, (r1)             001  00   10
+beqR0, r3, equal        110   1  111
+sltR0 r0, r3            100  00   11
+init r1, 1              000   1  000
+beqR0 r1 new            110   0  110
 		
-jump2:
-init r0, 6       
-ld r1, (r0) 
-addi r1, 1       
-str r1, (r0)     
-beqR0 r0, loop   
+jump2: 
+init r0, 6		000   0  101       
+ld r1, (r0) 		001  01   00
+addi r1, 1              100  01   01
+str r1, (r0)            010  01   00
+beqR0 r0, loop          110   0  000
 
-equal:
-init r0, 5       # r0 = 5
-ld r1, (r0)      # r0 = mem[5] = C
-addi r1, 1	 # r1++ (count++)
-str r1, (r0)     # mem[5] = r1
+equal:  		
+init r0, 5       	000   0  100
+ld r1, (r0)      	001  00   00
+addi r1, 1	 	100  01   01
+str r1, (r0)     	010  10   00
 jump1:
-beqR0, r0, jump2 # jump to loop
+beqR0, r0, jump2 	110   0  101
 
 new:
-init r1, 4       # r1 = 4
-str r3, (r1)     # mem[4] = r3 (new score)
-init r1, 5       # r1 = 5
-init r0, 1       # r3 = 1
-str r0, (r1)     # mem[5] = 1 (reset count)
-beqR0, r0, jump1 # intermediate jump
-
+init r1, 4       	000   1  011
+str r3, (r1)     	010  11   01
+init r1, 5       	000  01  100
+init r0, 1       	000   0  000
+str r0, (r1)     	010  00   01
+beqR0, r0, jump1 	110   0  101
