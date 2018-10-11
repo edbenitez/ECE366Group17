@@ -28,28 +28,26 @@ instructions and their corresponding machine code.
  2 bits will be used for registers so we will support 4 registered initialized to 0.
   
  instructions:		
-		op   reg imm  
- init  R imm    000  r  iii
+		op   reg  imm  
+ init  R imm    000  r    iii
  
-		op   reg reg
- Ld    R R      001  rr  rr
+		op   reg  reg
+ Ld    R R      001  rr   rr
  
-  		op   reg reg 
- Str   R R	010  rr  rr
+  		op   reg  reg 
+ Str   R R	010  rr   rr    
  
- 		op   reg reg
- add   R R	011  rr  rr
+ 		op   reg  reg
+ add   R R	011  rr   rr
  
- 		op   reg reg
- sub   R R	100  rr  rr
+      		op   reg  imm
+ addi  R imm    100  rr   ii
+
+ 		op   reg  reg
+ sltR0  R R	100  rr   rr 
  
- 		op   reg reg
- xor   R R	101  rr  rr
+ 		op   reg  imm
+ beqR0 R imm 	110  r    iii
  
- 		op   reg imm
- beqRs R imm 	110  rr  ii
- 
- 		op   reg imm
- shftR imm	111  rr  ii
 
 
