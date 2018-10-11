@@ -1,0 +1,40 @@
+Assembly:		Machine Code:		
+
+init r1, 3        	000  1  011
+ld r2, (r1)             001  01  01
+init r1, 8     		000  
+init r0, 6           
+str r1, (r0) 	     
+loop:
+ld r3, (r1)      
+scr r3, r2       
+init r1, 4       
+ld r0, (r1)    
+beqR0, r3, equal 
+sltR0 r0, r3     
+init r1, 1       
+beqR0 r1 new    
+		
+jump2:
+init r0, 6       
+ld r1, (r0) 
+addi r1, 1       
+str r1, (r0)     
+beqR0 r0, loop   
+
+equal:
+init r0, 5       # r0 = 5
+ld r1, (r0)      # r0 = mem[5] = C
+addi r1, 1	 # r1++ (count++)
+str r1, (r0)     # mem[5] = r1
+jump1:
+beqR0, r0, jump2 # jump to loop
+
+new:
+init r1, 4       # r1 = 4
+str r3, (r1)     # mem[4] = r3 (new score)
+init r1, 5       # r1 = 5
+init r0, 1       # r3 = 1
+str r0, (r1)     # mem[5] = 1 (reset count)
+beqR0, r0, jump1 # intermediate jump
+
