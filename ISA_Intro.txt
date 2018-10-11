@@ -28,8 +28,8 @@ instructions and their corresponding machine code.
  2 bits will be used for registers so we will support 4 registered initialized to 0.
   
  instructions:		
-		op   reg  imm  
- init  R imm    000  r    iii
+		op   reg  imm   
+ init  R imm    000  r    iii  (000 = 1 not 0)
  
 		op   reg  reg
  Ld    R R      001  rr   rr
@@ -44,10 +44,15 @@ instructions and their corresponding machine code.
  addi  R imm    100  rr   ii
 
  		op   reg  reg
- sltR0  R R	100  rr   rr 
+ sltR0  R R	101  rr   rr 
  
- 		op   reg  imm
- beqR0 R imm 	110  r    iii
- 
+ 		op   reg  imm (imm number will go into a MUX to select jump value)
+ beqR0 R imm 	11   00   iii 
+		11   01   iii
+ 		11   10   iii
+
+	        op        reg
+ scr   R R      11   11   rr
+                
 
 
