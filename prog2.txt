@@ -27,8 +27,7 @@ init r0, 5       # r0 = 5
 ld r1, (r0)      # r0 = mem[5] = C
 addi r1, 1	 # r1++ (count++)
 str r1, (r0)     # mem[5] = r1
-jump1:
-beqR0, r0, jump2 # jump to loop
+beqR0, r0, jump2 # intermediate jump
 
 new:
 init r1, 4       # r1 = 4
@@ -36,5 +35,5 @@ str r3, (r1)     # mem[4] = r3 (new score)
 init r1, 5       # r1 = 5
 init r0, 1       # r0 = 1
 str r0, (r1)     # mem[5] = 1 (reset count)
-beqR0, r0, jump1 # intermediate jump
+beqR0, r0, jump2 # intermediate jump
 
