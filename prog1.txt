@@ -1,41 +1,37 @@
 # F.A.S.T. Prog 1
 
-init R1, 1   # register that will be exponentiated i.e. 6^p
-ld R3,(R2)   # R3 = P = mem[0] this is only loaded once not inside the loop
+init r3, 1   # register that will be exponentiated i.e. 6^p
+init r1, 7   # keep an incrementer in memory
+str r0, (r1) # mem[7] = 0 initially
 
 loop:
-add R2, R1   # R2 = R1 + R1 = 1 + 1 = 2
-add R1, R1   # R1 = R2 + R1 = 2 + 1 = 3
-add R1, R2   # R1 = R1 + R1 = 3 + 3 = 6
-	     # Doing 1 << 1 + 1 << 2 would also work here
-             # 2 + 4 = 6 and then 6 << 1 + 6 << 2 = 12 + 24 = 36 and so on..
-init R2, 1
-add R0, R2  # R0 = R0 + 1   
+init r1, 0		# r1 = 0
+ld r1, (r1)		# r1 = mem[0] = P
+beqR0 r1 finish		# if incrementer == P, finish
+			# else do exponentiation
+addR  r3		# r2 = r3 + r3 = 1 + 1
+addR2 r3		# r2 = r2 + r3 = 1 + 2 = 3
+addR3 r2		# r3 = r2 + r2 = 3 + 3 = 6
 
-beqR out     # if R0  = P: jump out of the loop
-init R3, 0
-add R3, R0   # make R3 equal R0
-beqR loop    #  continue the loop
+modloop:
+addi r2, 1		# r2 = 1
+ld r2, (r2)		# r2 = mem[1] = Q
+subR3 r2		# r3 = r3 - r2 
+addi r2, 0		# r2 = 0
+sltR0 r3, r2		# if r3 < 0 then r0 = 1
+addi r1, 1		# r1 = 1
+beqR0 r1, done		# if r3 < 0, branch out
+beqR0 r0, modloop	# keep subtracting
 
-out:
-init R0, 1
-ld R2, (R0) # R2 = Q
-xor R2, R2
-add R2, R0  # R2 = -Q
-init R3, 0
+done:
+addi r1, 1		# r1 = 1 + 1 = 2
+str r3, r1		# mem[2] = R = r3
+init r0, 7		# r0 = 7
+ld r0, (r0)		# r0 = mem[7] = incrementer
+addi r0, 1		# incrementer++
+beqR0 r0, loop		# jump back to loop
 
-mins:
-add R1, R2  # R1 = R1 - Q
-init R0, 0
-add R0, R1  # make R0 = R1
-rsf R0, 8
-rsf R0, 7   # R0 = the MSB of R1
-beq mins    # if R0 == R3, that is, R1 > 0: continue the loop
+finish:
 
-# Here R0 = 1, R1 <0, add back a Q, store the result
-ld R2, (R1) # R2 = Q
-add R1, R2
-add R0, R0
-st R1, (R0)
 
 
