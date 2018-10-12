@@ -42,7 +42,7 @@ instructions and their corresponding machine code.
  subR3 	 R	01101     xx   (r3 = r3 - regx)
 
       		op   regx  imm
- addi  R imm    100  xx   ii   (regx = regx + 1)
+ addi  R imm    100  xx   ii   (regx = regx + imm)
 
  		op   regx  regy
  sltR0  R R	101  xx    yy  (R0 = 1 if regx < regy)
