@@ -57,18 +57,45 @@ for line in input_file:
         print("str r",r1,", r", r2)
         output_file.write("str r" + r1 + ",r " + r2 + "\n")
     
-    elif(line[0:3] == '011'):         # add instruction
-        r1 = line[3:5]
-        r2 = line[5:]
+    elif(line[0:5] == '01100'):         # addR instruction
+        r = line[5:]
         
-        r1 = str(int(r1, 2)) # convert to decimal 
-        r2 = str(int(r2, 2)) 
+        r = str(int(r, 2)) # convert to decimal 
+        
+        # update screen and output file
+        print("addR r",r)
+        output_file.write("addR" + r + "\n")
+    
+    elif(line[0:5] == '01110'):         # addR2 instruction
+        r = line[5:]
+        
+        r = str(int(r, 2)) # convert to decimal 
+         
+        # update screen and output file
+        print("addR2",r)
+        output_file.write("addR2" + r + "\n")
+
+    elif(line[0:5] == '01111'):         # addR3 instruction
+        r = line[5:]
+        
+        r = str(int(r, 2)) # convert to decimal 
     
        
         
         # update screen and output file
-        print("add r",r1,", r", r2)
-        output_file.write("add r" + r1 + ",r " + r2 + "\n")
+        print("addR3",r)
+        output_file.write("addR3" + r + "\n")
+    
+    elif(line[0:5] == '01101'):         # subR3 instruction
+        r = line[5:]
+        
+        r = str(int(r, 2)) # convert to decimal 
+    
+       
+        
+        # update screen and output file
+        print("subR3",r)
+        output_file.write("subR3" + r + "\n")
     
     elif(line[0:3] == '100'):         # addi instruction
         r1 = line[3:5]
