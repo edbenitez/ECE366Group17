@@ -52,8 +52,13 @@ instructions and their corresponding machine code.
 		11   01   iii
  		11   11   iii
 
+<<<<<<< HEAD
 	        op    d/care's    
  scrR3R2        1110  111      (r3 = best match of r3 and r2 done using logic)
+=======
+	        op        
+ scrR3R2        11. 10 011      (r3 = best match of r3 and r2 done using logic)
+>>>>>>> a881553ebaf3dd53c3bb83835bbfab3e86160113
                 
 
 
