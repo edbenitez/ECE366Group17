@@ -52,8 +52,8 @@ instructions and their corresponding machine code.
 		11   01   iii
  		11   11   iii
 
-	        op        
- scrR3R2        1111 1011      (r3 = best match of r3 and r2 done using logic)
+	        op    d/care's    
+ scrR3R2        1110  111      (r3 = best match of r3 and r2 done using logic)
                 
 
 
